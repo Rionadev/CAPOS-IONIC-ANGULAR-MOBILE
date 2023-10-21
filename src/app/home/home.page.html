@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Capacitor HTTP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <!-- Filtro -->
+  <ion-item>
+    <ion-input label="Id: " type="number" [(ngModel)]="id" name="id"></ion-input>
+    <ion-button [disabled]="!id" (click)="getPokemon()">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-card *ngIf="pokemon">
+    <!-- Sprite -->
+    <ion-img [src]="pokemon.sprites.front_default"></ion-img>
+
+    <!-- Nombre -->
+    <ion-card-header class="ion-text-center">
+      <ion-card-title class="ion-text-capitalize">{{pokemon.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-grid>
+        <!-- Tipo -->
+        <ion-row>
+          <ion-col class="ion-text-center">Tipo</ion-col>
+          <ion-col>
+            <ion-img class="ion-padding-start ion-padding-end" [src]="'assets/img/' + pokemon.types[0].type.name + '.gif'"></ion-img>
+          </ion-col>
+          <ion-col>
+            <ion-img class="ion-padding-start ion-padding-end" *ngIf="pokemon.types[1]" [src]="'assets/img/' + pokemon.types[1].type.name + '.gif'"></ion-img>
+          </ion-col>
+        </ion-row>
+        <!-- Peso -->
+        <ion-row class="ion-text-center">
+          <ion-col size="4">Peso</ion-col>
+          <ion-col size="8">{{pokemon.weight / 10}} kg</ion-col>
+        </ion-row>
+        <!-- Altura -->
+        <ion-row class="ion-text-center">
+          <ion-col size="4">Altura</ion-col>
+          <ion-col size="8">{{pokemon.height / 10}} m</ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+    
+  </ion-card>
+
+</ion-content>
