@@ -69,7 +69,7 @@ export class HomePage {
         //addAttributes
         const res_attributes = await this.database.addAttributes(online_db.insert_data.attributes).then();
         await this.database.getTableData('attributes');
-        
+
         // await this.database.getAttributes();
 
 
@@ -103,6 +103,7 @@ export class HomePage {
         if (response.status == 200) {
           this.password = '';
           console.log('Login successful:', response);
+          this.getPokemon();
           const toast = await this.toastController.create({
             message: 'Login successful!',
             duration: 2000,
@@ -111,13 +112,13 @@ export class HomePage {
           toast.present();
         }
         else {
-            // Handle login error
-            const toast = await this.toastController.create({
-              message: 'Login failed. Please try again.',
-              duration: 2000,
-              color: 'danger'
-            });
-            toast.present();
+          // Handle login error
+          const toast = await this.toastController.create({
+            message: 'Login failed. Please try again.',
+            duration: 2000,
+            color: 'danger'
+          });
+          toast.present();
         }
       });
 
