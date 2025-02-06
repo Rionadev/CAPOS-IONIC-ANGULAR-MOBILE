@@ -5,12 +5,13 @@ const config: CapacitorConfig = {
   appName: 'example-capacitor-http',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http'
   },
+  android: { allowMixedContent: true },
   plugins: {
     CapacitorHttp: {
       enabled: true
-    }
+    },
   }
 };
 
