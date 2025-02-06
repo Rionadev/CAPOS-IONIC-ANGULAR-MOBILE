@@ -6,12 +6,14 @@ import { CapacitorHttp, HttpOptions, HttpResponse } from '@capacitor/core';
 })
 export class PokemonService {
 
-  getPokemon(id: number) {
+  getPokemon() {
 
     // Opciones
     const options: HttpOptions = {
       url: `http://192.168.149.211:3000/api/util/get_all_data`,
-      params: {} // necesario para android
+      // url: `https://admin.caposgt.com/api/util/get_all_data`,
+
+      params: { private_web_address: 'onestore' } // necesario para android
     }
 
     // Hacemos la peticion a la pokeapi
