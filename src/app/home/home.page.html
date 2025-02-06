@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Capacitor HTTP
+      CaPos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,77 @@
 <ion-content [fullscreen]="true">
 
   <!-- Filtro -->
-  <ion-item>
+  <!-- <ion-item>
     <ion-input label="Id: " type="number" [(ngModel)]="id" name="id"></ion-input>
     <ion-button [disabled]="!id" (click)="getPokemon()">
       <ion-icon name="search-outline"></ion-icon>
     </ion-button>
-  </ion-item>
+  </ion-item> -->
+  <p align="center"><br><img src="/assets/img/logo.png" width="200" height="60" /></p>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <!-- <ion-label position="floating">Name</ion-label> -->
+        <ion-input 
+          label="Password" 
+          label-placement="floating" 
+          [(ngModel)]="password" 
+          type="password" 
+          placeholder="Enter password"
+          fill="outline"
+          [clearInput]="true"
+          readonly="true"
+          mode="md"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(1)">1</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(2)">2</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(3)">3</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(4)">4</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(5)">5</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(9)">6</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(7)">7</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(8)">8</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(9)">9</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="back()">Back</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="add(0)">0</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="logIn()">Log In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-card *ngIf="pokemon">
     <!-- Sprite -->
@@ -24,6 +89,8 @@
     <ion-card-header class="ion-text-center">
       <ion-card-title class="ion-text-capitalize">{{pokemon.name}}</ion-card-title>
     </ion-card-header>
+
+    
 
     <ion-card-content>
 
