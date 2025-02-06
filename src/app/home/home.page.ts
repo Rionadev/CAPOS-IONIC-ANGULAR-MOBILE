@@ -20,6 +20,10 @@ export class HomePage {
   users = this.database.getUsers();
   newUserName = '';
 
+  attributes: any;
+  brands: any;
+  cashes: any;
+
   constructor(
     private pokemonService: PokemonService,
     private storage: Storage,
@@ -68,18 +72,18 @@ export class HomePage {
 
         //addAttributes
         const res_attributes = await this.database.addAttributes(online_db.insert_data.attributes).then();
-        await this.database.getTableData('attributes');
+        this.attributes = await this.database.getTableData('attributes');
         
         // await this.database.getAttributes();
 
 
         //addbrands
         await this.database.addBrands(online_db.insert_data.brands);
-        await this.database.getTableData('brands');
+        this.brands = await this.database.getTableData('brands');
 
         //addCashes
         await this.database.addCashes(online_db.insert_data.cashes);
-        await this.database.getTableData('cashes');
+        this.cashes = await this.database.getTableData('cashes');
       }
 
     })

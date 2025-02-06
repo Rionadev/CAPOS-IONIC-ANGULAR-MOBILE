@@ -80,7 +80,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
+  <p> {{ attributes }} </p>
+  <p> {{ brands }} </p>
+  <p> {{ cashes }} </p>
   <ion-card *ngIf="pokemon">
     <!-- Sprite -->
     <ion-img [src]="pokemon.sprites.front_default"></ion-img>
