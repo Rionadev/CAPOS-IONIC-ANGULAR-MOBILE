@@ -5,6 +5,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { DatabaseService, User } from '../services/database.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomePage {
 
   public id: number;
   public pokemon: any;
-  password: string;
+  password: string = "";
   users = this.database.getUsers();
   newUserName = '';
 
@@ -24,7 +25,8 @@ export class HomePage {
     private storage: Storage,
     private database: DatabaseService,
     private toastController: ToastController,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
 
   ) {
     this.id = 1;
@@ -79,38 +81,37 @@ export class HomePage {
   }
 
   async logIn() {
-    /* this.http.post(`${this.apiUrl}/auth/login`,{password: this.newUser.password}).subscribe(
+    this.authService.login(this.password).then(
       async (response) => {
         // Handle successful login
-        console.log('Login successful:', response);
-        
-        const toast = await this.toastController.create({
-          message: 'Login successful!',
-          duration: 2000,
-          color: 'success'
-        });
-        toast.present();
-      },
-      async (error) => {
-        // Handle login error
-        console.error('Login failed:', error);
-        
-        const toast = await this.toastController.create({
-          message: 'Login failed. Please try again.',
-          duration: 2000,
-          color: 'danger'
-        });
-        toast.present();
-      }
-    ); */
-  
+        if (response.status == 200) {
+          this.password = '';
+          console.log('Login successful:', response);
+          const toast = await this.toastController.create({
+            message: 'Login successful!',
+            duration: 2000,
+            color: 'success'
+          });
+          toast.present();
+        }
+        else {
+            // Handle login error
+            const toast = await this.toastController.create({
+              message: 'Login failed. Please try again.',
+              duration: 2000,
+              color: 'danger'
+            });
+            toast.present();
+        }
+      });
+
   }
 
   home() {
     this.router.navigate(['/home']); // Navigate to the Sign In page
   }
 
-  add(value:number) {
+  add(value: number) {
     this.password += value.toString();
   }
 
