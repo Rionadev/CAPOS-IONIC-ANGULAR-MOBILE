@@ -9,24 +9,23 @@ export class SessionService {
 
     constructor(
         private storage: Storage,
-    ) {}
-
-    async ngOnInit() {
-        await this.init();
+    ) {
+       this.storage.create();
     }
 
-    // Create a storage
-    async init() {
-        this.getSession("session").then(
-            async (response) => {
-                if (response == 'user')
-                {
-                    await this.storage.create();
-                    await this.saveSession("session", 'user');
-                }
-        })
+    async isLoggedIn () {
+        const user = await this.getSession("session");
+        return false;//return user == 'user';
     }
 
+    async logOut() {
+        this.clearSession('session');
+    }
+    
+    async loggedIn()
+    {
+        await this.saveSession("session", 'user');
+    }
     // Save session data
     async saveSession(key:string, value:string) {
         await this.storage.set(key, value);
