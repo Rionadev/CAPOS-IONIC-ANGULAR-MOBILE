@@ -1,0 +1,47 @@
+{
+    "database": "CaposDB",
+    "version": 1,
+    "encrypted": false,
+    "mode": "full",
+    "tables": [
+        {
+            "name": "attribute",
+            "schema": [
+                {
+                    "column": "id",
+                    "value": "INTEGER PRIMARY KEY NOT NULL"
+                },
+                {
+                    "column": "_id",
+                    "value": "TEXT"
+                },
+                {
+                    "column": "products",
+                    "value": "INTEGER"
+                },
+                {
+                    "column": "name",
+                    "value": "TEXT"
+                },
+                {
+                    "column": "private_web_address",
+                    "value": "TEXT"
+                },
+                {
+                    "column": "created_at",
+                    "value": "TEXT"
+                }
+            ],
+            "value": [
+                [
+                    1,
+                    "6330ce10c8eeb5013a36a022",
+                    "0",
+                    "Small",
+                    "onestore",
+                    "2022-09-25 21:54:24.261"
+                ]
+            ]
+        }
+    ]
+}

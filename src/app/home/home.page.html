@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+
   <!-- Filtro -->
   <ion-item>
     <ion-input label="Id: " type="number" [(ngModel)]="id" name="id"></ion-input>
@@ -32,10 +32,12 @@
         <ion-row>
           <ion-col class="ion-text-center">Tipo</ion-col>
           <ion-col>
-            <ion-img class="ion-padding-start ion-padding-end" [src]="'assets/img/' + pokemon.types[0].type.name + '.gif'"></ion-img>
+            <ion-img class="ion-padding-start ion-padding-end"
+              [src]="'assets/img/' + pokemon.types[0].type.name + '.gif'"></ion-img>
           </ion-col>
           <ion-col>
-            <ion-img class="ion-padding-start ion-padding-end" *ngIf="pokemon.types[1]" [src]="'assets/img/' + pokemon.types[1].type.name + '.gif'"></ion-img>
+            <ion-img class="ion-padding-start ion-padding-end" *ngIf="pokemon.types[1]"
+              [src]="'assets/img/' + pokemon.types[1].type.name + '.gif'"></ion-img>
           </ion-col>
         </ion-row>
         <!-- Peso -->
@@ -49,9 +51,17 @@
           <ion-col size="8">{{pokemon.height / 10}} m</ion-col>
         </ion-row>
       </ion-grid>
-
+      <!-- Users List -->
+      <ion-list *ngIf="userList.length > 0">
+        <ion-item *ngFor="let user of userList">
+          <ion-label>
+            <h2>{{ user.name }}</h2>
+            <p>ID: {{ user.id }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
-    
+
   </ion-card>
 
 </ion-content>
