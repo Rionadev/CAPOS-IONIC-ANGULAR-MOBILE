@@ -61,20 +61,36 @@ export class HomePage {
     this.id = 3;
     console.log('-------------------------------', this.getSession());
     // Obtenemos un pokemon dado su id
-    this.pokemonService.doGetPost().then(pokemon => {
+    this.pokemonService.getPokemon().then(async online_db => {
       // this.pokemon = pokemon;
-      console.log(pokemon);
+      console.log(online_db.insert_data);
+      if (online_db && online_db?.insert_data) {
+
+        //addAttributes
+        const res_attributes = await this.database.addAttributes(online_db.insert_data.attributes).then();
+        await this.database.getTableData('attributes');
+        
+        // await this.database.getAttributes();
+
+
+        //addbrands
+        await this.database.addBrands(online_db.insert_data.brands);
+        await this.database.getTableData('brands');
+
+        //addCashes
+        await this.database.addCashes(online_db.insert_data.cashes);
+        await this.database.getTableData('cashes');
+      }
+
     })
 
-    // this.users = this.userList;
-    this.createUser();
-    console.log(this.users);
-    console.log('00000', this.userList);
+
 
   }
   get userList(): User[] {
     return this.users(); // Return the current value of the signal
   }
+
   async createUser() {
     this.newUserName = 'AAAA';
     await this.database.addUser(this.newUserName);
